@@ -197,7 +197,13 @@ export default function Dashboard() {
             
       {/* Footer */}
       <div className="text-center mt-12">
-        <p className="text-xs">© 2026 georgios hadjiantonis</p>
+        <a 
+          href="https://ghadj.github.io" 
+          target="_blank" 
+          className="text-xs"
+        >
+          © 2026 georgios hadjiantonis
+        </a>
       </div>
     </div>
   )
