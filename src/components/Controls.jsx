@@ -40,7 +40,7 @@ export default function Controls() {
 
       <div className="fixed bottom-0 right-0 bg-black text-white text-xs flex items-center">
         {isActive ? <Play size={12} />:<Pause size={12} />} 
-        {String(timeLeft || timerDuration).padStart(3, '0')} seconds
+        {String(timeLeft || timerDuration).padStart(3, '0')}s
       </div>
     </div>
   )
