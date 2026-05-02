@@ -3,22 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-white text-black ;
-    @apply antialiased;
-  }
+    body {
 
-  .dark body {
-    @apply bg-black text-white;
-  }
+    }
 }
 
 @layer components {
-  .transition-ghost {
-    @apply transition-opacity duration-300;
-  }
 
-  .cursor-none {
-    cursor: none;
-  }
 }

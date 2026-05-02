@@ -11,7 +11,6 @@ export default {
       },
       colors: {
         'light-bg': white,
-        'dark-bg': black,
       }
     }
   },
