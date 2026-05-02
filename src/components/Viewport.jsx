@@ -86,7 +86,7 @@ export default function Viewport() {
       {showLineOfAction && <LineOfAction />}
 
       {/* Image Info - Subtle text in corner */}
-      <div className="absolute text-xs bg-black text-white pointer-events-none">
+      <div className="absolute bottom-0 text-xs bg-black text-white pointer-events-none">
         {currentImage.name}
       </div>
     </div>
