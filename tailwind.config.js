@@ -10,7 +10,7 @@ export default {
         sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Helvetica Neue"', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
-        'light-bg': white,
+        'light-bg': 'white',
       }
     }
   },
