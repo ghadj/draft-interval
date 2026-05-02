@@ -194,6 +194,11 @@ export default function Dashboard() {
           Start Session
         </button>
       </div>
+            
+      {/* Footer */}
+      <div className="text-center mt-12">
+        <p className="text-xs">© 2026 georgios hadjiantonis</p>
+      </div>
     </div>
   )
 }
