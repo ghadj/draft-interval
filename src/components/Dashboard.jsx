@@ -92,7 +92,7 @@ export default function Dashboard() {
               {isLoading ? 'Loading...' : 'Select Folder'}
             </button>
           ) : (
-            <div className="text-sm mb-2">
+            <div className="text-xs font-light mb-2">
               File System API not supported. Use file input below.
             </div>
           )}
@@ -131,7 +131,7 @@ export default function Dashboard() {
         </div>
 
         {/* Timer Settings */}
-        <div className="space-y-4 pt-4 border-t border-[#e0e0e0]">
+        <div className="space-y-4 pt-4 border-t border-black">
           {/* Mode Selection */}
           <div className="space-y-2">
             <label className="text-sm ">Mode</label>
@@ -148,7 +148,7 @@ export default function Dashboard() {
 
           {/* Duration Setting (for Fixed mode) */}
           {timerMode === 'fixed' && (
-            <div className="space-y-0">
+            <div>
               <label className="text-sm ">
                 Duration (seconds)
               </label>
@@ -161,7 +161,7 @@ export default function Dashboard() {
                 onChange={(e) => setTimerDuration(parseInt(e.target.value))}
                 className="w-full"
               />
-              <div className="text-center">
+              <div className="text-center text-sm  font-light">
                 {timerDuration}s
               </div>
             </div>
@@ -190,7 +190,7 @@ export default function Dashboard() {
           disabled={loadedCount === 0}
           className="w-full flex items-center justify-center gap-3 bg-green-600 text-white px-6 py-4 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-bold text-lg"
         >
-          <Play size={24} />
+          <Play size={20} />
           Start Session
         </button>
       </div>

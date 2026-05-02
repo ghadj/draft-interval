@@ -83,7 +83,7 @@ function App() {
   ])
 
   // Show Dashboard if no images loaded, otherwise show Practice View
-  if (images.length === 0) {
+  if (!isActive) {
     return <Dashboard />
   }
 
@@ -95,18 +95,6 @@ function App() {
       {/* Controls HUD */}
       {isActive && <Controls />}
 
-      {/* Keyboard Help (optional, when not active) */}
-      {!isActive && (
-        <div className="absolute top-4 right-4 bg-black bg-opacity-70 rounded p-4 text-xs text-gray-500  max-w-xs">
-          <p className="font-bold text-white mb-2">Shortcuts</p>
-          <ul className="space-y-1">
-            <li>Space: Play/Pause</li>
-            <li>← →: Previous/Next</li>
-            <li>G: Grayscale | F: Flip | B: Blur | H: High Contrast</li>
-            <li>R: Rule of Thirds | L: Line of Action</li>
-          </ul>
-        </div>
-      )}
     </div>
   )
 }

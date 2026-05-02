@@ -1,5 +1,5 @@
 import React from 'react'
-import { Play, Pause, SkipForward, SkipBack, Grid3x3, Zap } from 'lucide-react'
+import { Play, Pause, SkipForward, SkipBack, Grid3x3, Zap, Pen } from 'lucide-react'
 import { useSessionStore } from '../store/useSessionStore'
 import { useTimer } from '../hooks/useTimer'
 
@@ -152,7 +152,7 @@ export default function Controls() {
           className="p-2 hover:bg-gray-800 rounded-lg transition-colors text-white"
           title="Line of Action"
         >
-          <Zap size={20} />
+          <Pen size={20} />
         </button>
       </div>
     </div>

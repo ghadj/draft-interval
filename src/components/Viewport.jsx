@@ -57,7 +57,7 @@ export default function Viewport() {
   if (!currentImage) {
     return (
       <div className="w-full h-screen flex items-center justify-center bg-black">
-        <p className="text-gray-500">No images loaded</p>
+        <p className="text-white">No images loaded</p>
       </div>
     )
   }
