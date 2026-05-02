@@ -7,10 +7,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['Courier New', 'monospace'],
+        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Helvetica Neue"', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
-        ghost: 'rgba(0, 0, 0, 0.05)',
+        'light-bg': white,
+        'dark-bg': black,
       }
     }
   },

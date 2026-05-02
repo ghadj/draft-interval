@@ -69,32 +69,30 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="w-full h-screen bg-black flex flex-col items-center justify-center p-8">
+    <div className="w-full h-screen flex flex-col items-center justify-center p-12">
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-mono font-bold text-white mb-2">
+        <h1 className="text-4xl  font-bold mb-2">
           draft-interval
         </h1>
-        <p className="text-gray-500 text-sm">minimal gesture study tool</p>
+        <p className="text-xs  tracking-wide">/minimal-sketching-study-tool</p>
       </div>
 
       {/* Main Card */}
-      <div className="bg-gray-900 rounded-lg p-12 max-w-md w-full space-y-8">
+      <div className="max-w-md w-full space-y-4">
         {/* Image Loading Section */}
         <div className="space-y-4">
-          <h2 className="text-lg font-mono text-white">Load Images</h2>
-
           {isFileSystemAccessAPISupported() ? (
             <button
               onClick={handleFolderPick}
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-3 bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50 font-mono"
+              className="w-full flex rounded-lg items-center justify-center gap-3 border border-black  px-6 py-3 hover:bg-[#e5e5e5] transition-colors disabled:opacity-50  font-light"
             >
               <Folder size={20} />
               {isLoading ? 'Loading...' : 'Select Folder'}
             </button>
           ) : (
-            <div className="text-sm text-gray-400 mb-2">
+            <div className="text-sm mb-2">
               File System API not supported. Use file input below.
             </div>
           )}
@@ -111,38 +109,36 @@ export default function Dashboard() {
           <button
             onClick={() => fileInputRef.current?.click()}
             disabled={isLoading}
-            className="w-full flex items-center justify-center gap-3 bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors disabled:opacity-50 font-mono"
+            className="w-full flex rounded-lg items-center justify-center gap-3 border border-black px-6 py-3 hover:bg-[#e5e5e5] transition-colors disabled:opacity-50  font-light"
           >
             <Upload size={20} />
             {isLoading ? 'Loading...' : 'Select Files'}
           </button>
 
           {loadedCount > 0 && (
-            <div className="bg-gray-800 rounded p-3 text-center">
-              <p className="text-green-400 text-sm font-mono">
+            <div className="p-3 text-center">
+              <p className=" text-sm  font-light">
                 ✓ {loadedCount} image{loadedCount !== 1 ? 's' : ''} loaded
               </p>
             </div>
           )}
 
           {errorMsg && (
-            <div className="bg-red-900 bg-opacity-30 rounded p-3 border border-red-700">
-              <p className="text-red-300 text-sm">{errorMsg}</p>
+            <div className="p-3 text-center rounded-lg">
+              <p className="text-sm">{errorMsg}</p>
             </div>
           )}
         </div>
 
         {/* Timer Settings */}
-        <div className="space-y-4 border-t border-gray-700 pt-6">
-          <h2 className="text-lg font-mono text-white">Timer Settings</h2>
-
+        <div className="space-y-4 pt-4 border-t border-[#e0e0e0]">
           {/* Mode Selection */}
           <div className="space-y-2">
-            <label className="text-sm text-gray-400 font-mono">Mode</label>
+            <label className="text-sm ">Mode</label>
             <select
               value={timerMode}
               onChange={(e) => setTimerMode(e.target.value)}
-              className="w-full bg-gray-800 text-white rounded px-4 py-2 font-mono text-sm border border-gray-700 focus:outline-none focus:border-white"
+              className="w-full rounded-lg px-6 py-4 text-sm border border-black focus:outline-none focus:border-[#333333]"
             >
               <option value="fixed">Fixed Interval</option>
               <option value="class">Class Mode</option>
@@ -152,36 +148,36 @@ export default function Dashboard() {
 
           {/* Duration Setting (for Fixed mode) */}
           {timerMode === 'fixed' && (
-            <div className="space-y-2">
-              <label className="text-sm text-gray-400 font-mono">
+            <div className="space-y-0">
+              <label className="text-sm ">
                 Duration (seconds)
               </label>
               <input
                 type="range"
                 min="5"
-                max="300"
+                max="450"
                 step="5"
                 value={timerDuration}
                 onChange={(e) => setTimerDuration(parseInt(e.target.value))}
                 className="w-full"
               />
-              <div className="text-center text-white font-mono">
+              <div className="text-center">
                 {timerDuration}s
               </div>
             </div>
           )}
 
           {timerMode === 'class' && (
-            <div className="bg-gray-800 rounded p-3">
-              <p className="text-xs text-gray-400 font-mono">
+            <div>
+              <p className="text-xs pb-12 font-light">
                 Class Mode: 10×30s, 5×2m, 2×5m, 1×20m
               </p>
             </div>
           )}
 
           {timerMode === 'memory' && (
-            <div className="bg-gray-800 rounded p-3">
-              <p className="text-xs text-gray-400 font-mono">
+            <div>
+              <p className="text-xs pb-12 font-light">
                 Image shows for 5s, then you draw from memory
               </p>
             </div>
@@ -192,7 +188,7 @@ export default function Dashboard() {
         <button
           onClick={handleStart}
           disabled={loadedCount === 0}
-          className="w-full flex items-center justify-center gap-3 bg-green-600 text-white px-6 py-4 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-mono font-bold text-lg"
+          className="w-full flex items-center justify-center gap-3 bg-green-600 text-white px-6 py-4 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-bold text-lg"
         >
           <Play size={24} />
           Start Session

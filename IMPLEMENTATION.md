@@ -62,7 +62,7 @@ src/
 
 ### 3. **Minimal HUD (Controls)**
 - Floating control bar (bottom-center, auto-hides after 3s of inactivity)
-- Large timer display (monospace font)
+- Large timer display (minutes:seconds)
 - Playback controls: Play/Pause, Previous, Next
 - Single-letter filter buttons: G, F, B, HC
 - Grid & Lightning icons for overlays

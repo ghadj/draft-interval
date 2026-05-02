@@ -32,7 +32,7 @@ export default function Controls() {
     <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-black bg-opacity-70 rounded-lg p-4 backdrop-blur">
       {/* Timer Display */}
       <div className="text-center min-w-[60px]">
-        <div className="text-3xl font-mono font-bold text-white">
+        <div className="text-3xl  font-bold text-white">
           {String(timeLeft || timerDuration).padStart(2, '0')}
         </div>
         <div className="text-xs text-gray-500">seconds</div>
@@ -80,7 +80,7 @@ export default function Controls() {
         {/* Grayscale */}
         <button
           onClick={() => toggleFilter('grayscale')}
-          className={`px-3 py-2 rounded-lg transition-colors text-sm font-mono ${
+          className={`px-3 py-2 rounded-lg transition-colors text-sm  ${
             filters.grayscale
               ? 'bg-white text-black'
               : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
@@ -93,7 +93,7 @@ export default function Controls() {
         {/* Flip */}
         <button
           onClick={() => toggleFilter('flip')}
-          className={`px-3 py-2 rounded-lg transition-colors text-sm font-mono ${
+          className={`px-3 py-2 rounded-lg transition-colors text-sm  ${
             filters.flip
               ? 'bg-white text-black'
               : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
@@ -106,7 +106,7 @@ export default function Controls() {
         {/* Blur */}
         <button
           onClick={() => toggleFilter('blur')}
-          className={`px-3 py-2 rounded-lg transition-colors text-sm font-mono ${
+          className={`px-3 py-2 rounded-lg transition-colors text-sm  ${
             filters.blur
               ? 'bg-white text-black'
               : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
@@ -119,7 +119,7 @@ export default function Controls() {
         {/* High Contrast */}
         <button
           onClick={() => toggleFilter('highContrast')}
-          className={`px-3 py-2 rounded-lg transition-colors text-sm font-mono ${
+          className={`px-3 py-2 rounded-lg transition-colors text-sm  ${
             filters.highContrast
               ? 'bg-white text-black'
               : 'bg-gray-800 text-gray-300 hover:bg-gray-700'

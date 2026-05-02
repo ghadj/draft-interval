@@ -53,7 +53,6 @@ Deployment uses GitHub Actions (`.github/workflows/deploy.yml`). See [DEPLOYMENT
 - Tailwind CSS only (no CSS-in-JS)
 - Dark mode enabled by default (`dark:` prefix ready)
 - Lucide icons for UI elements
-- Monospace font (Courier New) for timer display
 
 ### Timer Logic
 - **Never** use simple `setInterval` for critical timing

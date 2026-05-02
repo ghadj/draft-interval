@@ -97,7 +97,7 @@ function App() {
 
       {/* Keyboard Help (optional, when not active) */}
       {!isActive && (
-        <div className="absolute top-4 right-4 bg-black bg-opacity-70 rounded p-4 text-xs text-gray-500 font-mono max-w-xs">
+        <div className="absolute top-4 right-4 bg-black bg-opacity-70 rounded p-4 text-xs text-gray-500  max-w-xs">
           <p className="font-bold text-white mb-2">Shortcuts</p>
           <ul className="space-y-1">
             <li>Space: Play/Pause</li>
