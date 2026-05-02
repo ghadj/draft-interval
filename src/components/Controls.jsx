@@ -30,15 +30,15 @@ export default function Controls() {
 
   return (
     <div>
-      <div className="fixed top-0 left-0 bg-black text-white text-xs ">
+      <div className="fixed top-0 left-0 pl-4 pr-1 bg-black text-white text-xs ">
         (G)rayscale (F)lip (B)lur (H)igh Contrast (R)ule of Thirds (L)ine of Action
       </div>
 
-      <div className="fixed top-0 right-0 bg-black text-white text-xs ">
+      <div className="fixed top-0 right-0 pl-1 pr-4 bg-black text-white text-xs ">
         (Space) Play/Pause (←) Previous (→) Next
       </div>
 
-      <div className="fixed bottom-0 right-0 bg-black text-white text-xs flex items-center">
+      <div className="fixed bottom-0 right-0 pl-1 pr-4 bg-black text-white text-xs flex items-center">
         {isActive ? <Play size={12} />:<Pause size={12} />} 
         {String(timeLeft || timerDuration).padStart(3, '0')}s
       </div>
