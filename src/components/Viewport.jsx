@@ -10,7 +10,6 @@ export default function Viewport() {
         showRuleOfThirds,
         showLineOfAction,
         isActive,
-        toggleControls,
         setShowControls,
     } = useSessionStore()
 
