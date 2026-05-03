@@ -18,7 +18,14 @@ function App() {
         resetAll
     } = useSessionStore()
 
-    const { togglePause, handleNextImage, handlePreviousImage } = useTimer()
+    const { togglePause, handleNextImage, handlePreviousImage, startTimer } = useTimer()
+
+    // Start timer when session becomes active
+    useEffect(() => {
+        if (isActive) {
+            startTimer()
+        }
+    }, [isActive, startTimer])
 
     useEffect(() => {
         const handleKeyDown = (e) => {
