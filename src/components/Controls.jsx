@@ -25,7 +25,7 @@ export default function Controls() {
         (Space) Play/Pause (←) Previous (→) Next
       </div>
 
-      <div className="fixed bottom-0 right-0 pl-1 pr-4 bg-black text-white text-xs flex items-center">
+      <div className="fixed bottom-0 right-0 pl-1 pr-4 bg-black text-white text-xs flex items-center tabular-nums">
         {isPaused ? <Pause size={13} /> : <Play size={13} />}
         {String(timeLeft || timerDuration).padStart(3, '0')}s
       </div>
