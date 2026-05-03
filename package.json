@@ -8,8 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.jsx",
-    "setup": "bash GITHUB_SETUP.sh",
-    "deploy:build": "npm run build && echo '✅ Build complete! Ready for deployment.'"
+    "deploy:build": "npm run build && echo 'Build complete! Ready for deployment.'"
   },
   "dependencies": {
     "react": "^18.2.0",
