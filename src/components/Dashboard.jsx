@@ -137,7 +137,7 @@ export default function Dashboard() {
                             <select
                                 value={timerMode}
                                 onChange={(e) => setTimerMode(e.target.value)}
-                                className="w-full appearance-none rounded-lg px-6 py-4 text-sm border border-black focus:outline-none focus:border-[#333333] bg-white"                        >
+                                className="w-full appearance-none rounded-lg px-6 py-4 text-sm border border-black focus:outline-none focus:border-[#333333] bg-white hover:bg-[#e5e5e5] transition-colors"                        >
                                 <option value="fixed">Fixed Interval</option>
                                 <option value="class">Class Mode</option>
                                 <option value="memory">Memory Flash</option>
