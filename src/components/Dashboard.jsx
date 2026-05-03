@@ -176,7 +176,7 @@ export default function Dashboard() {
                     {timerMode === 'memory' && (
                         <div>
                             <p className="text-xs pb-12 font-light">
-                                Image shows for 5s, then you draw from memory
+                                Image shows for 5-15 seconds, then you draw from memory
                             </p>
                         </div>
                     )}

@@ -1,89 +1,112 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import { useSessionStore } from '../store/useSessionStore'
 
 export const useTimer = () => {
   const {
     isActive,
+    isPaused,
     timerMode,
     timerDuration,
     classSequence,
-    currentImageIndex,
+    endTime,
     setTimeLeft,
     setEndTime,
     setIsActive,
+    setIsPaused,
     nextImage,
+    previousImage,
   } = useSessionStore()
 
   const intervalRef = useRef(null)
   const currentSequenceIndexRef = useRef(0)
+  const remainingMsRef = useRef(0)
 
-  const getDuration = () => {
+  const getDuration = useCallback(() => {
     if (timerMode === 'class') {
       return classSequence[currentSequenceIndexRef.current] || timerDuration
     }
     if (timerMode === 'memory') {
-      return 5 // Memory flash shows image for 5 seconds
+      return 5 + Math.floor(Math.random() * 10)
     }
     return timerDuration
-  }
+  }, [timerMode, classSequence, timerDuration])
 
-  const startTimer = () => {
+  const startTimer = useCallback(() => {
     const duration = getDuration()
-    const startTime = Date.now()
-    const targetEndTime = startTime + duration * 1000
+    const targetEndTime = Date.now() + duration * 1000
 
     setEndTime(targetEndTime)
     setIsActive(true)
-  }
+    setIsPaused(false)
+  }, [getDuration, setEndTime, setIsActive, setIsPaused])
+
+  const pauseTimer = useCallback(() => {
+    const state = useSessionStore.getState()
+    if (!state.isActive || state.isPaused) return
+    remainingMsRef.current = Math.max(0, state.endTime - Date.now())
+    setIsPaused(true)
+  }, [setIsPaused])
+
+  const resumeTimer = useCallback(() => {
+    const state = useSessionStore.getState()
+    if (!state.isActive || !state.isPaused) return
+    setEndTime(Date.now() + remainingMsRef.current)
+    setIsPaused(false)
+  }, [setEndTime, setIsPaused])
+
+  const togglePause = useCallback(() => {
+    const state = useSessionStore.getState()
+    state.isPaused ? resumeTimer() : pauseTimer()
+  }, [resumeTimer, pauseTimer])
+
+  const stopTimer = useCallback(() => {
+    setIsActive(false)
+    setIsPaused(false)
+    setEndTime(null)
+    setTimeLeft(0)
+  }, [setIsActive, setIsPaused, setEndTime, setTimeLeft])
+
+  const handleNextImage = useCallback(() => {
+    nextImage()
+    if (isActive) startTimer()
+  }, [nextImage, isActive, startTimer])
+
+  const handlePreviousImage = useCallback(() => {
+    previousImage()
+    if (isActive) startTimer()
+  }, [previousImage, isActive, startTimer])
 
   useEffect(() => {
-    if (!isActive) {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
+    if (!isActive || isPaused || !endTime) {
+      if (intervalRef.current) clearInterval(intervalRef.current)
       return
     }
 
-    // Anti-drift logic: compare performance.now() against target endTime
     intervalRef.current = setInterval(() => {
       const now = Date.now()
-      const remaining = Math.max(0, useSessionStore.getState().endTime - now)
+      const remaining = Math.max(0, endTime - now)
       const timeLeftInSeconds = Math.ceil(remaining / 1000)
 
-      setTimeLeft(timeLeftInSeconds)
+      if (useSessionStore.getState().timeLeft !== timeLeftInSeconds) {
+        setTimeLeft(timeLeftInSeconds)
+      }
 
       if (remaining <= 0) {
-        // Timer expired
         clearInterval(intervalRef.current)
 
         if (timerMode === 'class') {
-          currentSequenceIndexRef.current =
-            (currentSequenceIndexRef.current + 1) % classSequence.length
+          currentSequenceIndexRef.current = (currentSequenceIndexRef.current + 1) % classSequence.length
         }
 
         nextImage()
-
-        // Auto-restart timer for next image
-        if (timerMode !== 'fixed' || timerMode === 'fixed') {
-          setTimeout(() => {
-            startTimer()
-          }, 300)
-        } else {
-          setIsActive(false)
-        }
+        startTimer()
       }
-    }, 100) // Check every 100ms for smoothness
+    }, 100)
 
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
+      if (intervalRef.current) clearInterval(intervalRef.current)
     }
-  }, [isActive])
+  }, [isActive, isPaused, endTime, timerMode, classSequence, nextImage, setTimeLeft, startTimer])
 
-  return {
-    startTimer,
-    stopTimer: () => setIsActive(false),
-    getDuration,
-  }
+  return { startTimer, stopTimer, pauseTimer, resumeTimer, togglePause, getDuration, handleNextImage, handlePreviousImage }
 }

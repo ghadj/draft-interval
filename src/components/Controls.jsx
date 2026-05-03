@@ -1,7 +1,6 @@
 import React from 'react'
-import { Play, Pause, SkipForward, SkipBack, Grid3x3, Zap, Pen } from 'lucide-react'
+import { Play, Pause } from 'lucide-react'
 import { useSessionStore } from '../store/useSessionStore'
-import { useTimer } from '../hooks/useTimer'
 
 export default function Controls() {
   const {
@@ -12,7 +11,6 @@ export default function Controls() {
     getCurrentImage,
   } = useSessionStore()
 
-  const { startTimer } = useTimer()
   const currentImage = getCurrentImage()
 
   if (!isShowControls && !isPaused) return null

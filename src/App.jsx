@@ -1,27 +1,24 @@
 import { useEffect } from 'react'
 import { useSessionStore } from './store/useSessionStore'
+import { useTimer } from './hooks/useTimer'
 import Dashboard from './components/Dashboard'
 import Viewport from './components/Viewport'
 import Controls from './components/Controls'
-import { useTimer } from './hooks/useTimer'
 
 function App() {
     const {
         isActive,
-        isPaused,
         images,
         toggleFilter,
         toggleRuleOfThirds,
         toggleLineOfAction,
         nextImage,
         previousImage,
-        setIsPaused,
         setIsActive
     } = useSessionStore()
 
-    const { startTimer } = useTimer()
+    const { togglePause, handleNextImage, handlePreviousImage } = useTimer()
 
-    // Keyboard shortcuts
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (!isActive) return
@@ -33,18 +30,15 @@ function App() {
                     break
                 case 'Space':
                     e.preventDefault()
-                    setIsPaused(!isPaused)
-                    if (!isPaused) {
-                        startTimer()
-                    }
+                    togglePause()
                     break
                 case 'ArrowRight':
                     e.preventDefault()
-                    nextImage()
+                    handleNextImage()
                     break
                 case 'ArrowLeft':
                     e.preventDefault()
-                    previousImage()
+                    handlePreviousImage()
                     break
                 case 'KeyF':
                     e.preventDefault()
@@ -79,26 +73,24 @@ function App() {
         return () => window.removeEventListener('keydown', handleKeyDown)
     }, [
         isActive,
+        setIsActive,
         toggleFilter,
         toggleRuleOfThirds,
         toggleLineOfAction,
         nextImage,
         previousImage,
-        setIsPaused,
-        startTimer,
+        togglePause,
+        handleNextImage,
+        handlePreviousImage,
     ])
 
-    // Show Dashboard if no images loaded, otherwise show Practice View
     if (!isActive) {
         return <Dashboard />
     }
 
     return (
         <div className="w-full h-screen bg-black overflow-hidden">
-            {/* Practice View */}
             <Viewport />
-
-            {/* Controls HUD */}
             {<Controls />}
         </div>
     )
