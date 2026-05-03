@@ -4,6 +4,7 @@ export const useSessionStore = create((set, get) => ({
   // Image Management
   images: [],
   currentImageIndex: 0,
+  clearImages: () => set({ images: [], currentImageIndex: 0 }),
   setImages: (images) => set({ images, currentImageIndex: 0 }),
   
   nextImage: () => {
