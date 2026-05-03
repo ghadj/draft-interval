@@ -2,14 +2,11 @@
 
 A minimal gesture study tool for artists. Load local images, set a timer, and practice drawing with full-screen focus.
 
-## Quick Start
+## Try It Now
 
-```bash
-npm install
-npm run dev
-```
+The app is available online: 
 
-Open http://localhost:5173/draft-interval/
+[https://ghadj.github.io/draft-interval/](https://ghadj.github.io/draft-interval/)
 
 ## Features
 
@@ -33,13 +30,6 @@ Open http://localhost:5173/draft-interval/
 | `L` | Toggle Line of Action |
 | `Esc` | Exit Practice (back to Dashboard) |
 
-## Build & Deploy
-
-```bash
-npm run build       # Production bundle
-npm run deploy:build  # Build with deployment confirmation
-```
-
 ## License
 
-MIT
+MIT – See [LICENSE](LICENSE) for details.
