@@ -9,28 +9,13 @@ export default function Controls() {
     isPaused,
     timeLeft,
     timerDuration,
-    filters,
-    showRuleOfThirds,
-    setIsPaused,
-    toggleFilter,
-    toggleRuleOfThirds,
-    toggleLineOfAction,
     getCurrentImage,
   } = useSessionStore()
 
   const { startTimer } = useTimer()
-
-  const handlePlayPause = () => {
-    if (isPaused) {
-      setIsPaused(false)
-    } else {
-      startTimer()
-    }
-  }
+  const currentImage = getCurrentImage()
 
   if (!isShowControls) return null
-
-  const currentImage = getCurrentImage()
 
   return (
     <div>
