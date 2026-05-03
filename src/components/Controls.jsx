@@ -30,7 +30,6 @@ export default function Controls() {
         {String(timeLeft || timerDuration).padStart(3, '0')}s
       </div>
 
-      {/* Image Info - Subtle text in corner */}
       <div className="absolute bottom-0 text-xs pl-4 pr-1 bg-black text-white pointer-events-none">
         {currentImage.name}
       </div>

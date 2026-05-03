@@ -16,7 +16,6 @@ export default function Viewport() {
     const imgRef = useRef(null)
     const containerRef = useRef(null)
 
-    // Build filter string from active filters
     const getFilterStyle = () => {
         let filterString = ''
         if (filters.grayscale) filterString += 'grayscale(100%)'
@@ -31,7 +30,6 @@ export default function Viewport() {
         return transform
     }
 
-    // Handle mouse movement for UI fade-in
     useEffect(() => {
         if (!isActive) return
 
