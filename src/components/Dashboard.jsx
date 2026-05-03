@@ -200,14 +200,25 @@ export default function Dashboard() {
             </div>
 
             {/* Footer */}
-            <div className="text-center mt-12">
-                <a
-                    href="https://ghadj.github.io"
-                    target="_blank"
-                    className="text-xs"
-                >
-                    © 2026 georgios hadjiantonis
-                </a>
+            <div className="text-center mt-12 space-y-2">
+                <div>
+                    <a
+                        href="https://ghadj.github.io"
+                        target="_blank"
+                        className="text-xs hover:underline"
+                    >
+                        © 2026 georgios hadjiantonis
+                    </a>
+                </div>
+                <div>
+                    <a
+                        href="https://github.com/ghadj/draft-interval"
+                        target="_blank"
+                        className="text-xs hover:underline"
+                    >
+                        github
+                    </a>
+                </div>
             </div>
         </div>
     )
