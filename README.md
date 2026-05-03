@@ -31,7 +31,7 @@ Open http://localhost:5173/draft-interval/
 | `H` | Toggle High Contrast |
 | `R` | Toggle Rule of Thirds |
 | `L` | Toggle Line of Action |
-| 'Esc' | Exit Practice (back to Dashboard) |
+| `Esc` | Exit Practice (back to Dashboard) |
 
 ## Build & Deploy
 
