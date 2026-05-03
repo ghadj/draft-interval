@@ -6,97 +6,102 @@ import Controls from './components/Controls'
 import { useTimer } from './hooks/useTimer'
 
 function App() {
-  const {
-    isActive,
-    images,
-    toggleFilter,
-    toggleRuleOfThirds,
-    toggleLineOfAction,
-    nextImage,
-    previousImage,
-    setIsActive,
-  } = useSessionStore()
+    const {
+        isActive,
+        isPaused,
+        images,
+        toggleFilter,
+        toggleRuleOfThirds,
+        toggleLineOfAction,
+        nextImage,
+        previousImage,
+        setIsPaused,
+        setIsActive
+    } = useSessionStore()
 
-  const { startTimer } = useTimer()
+    const { startTimer } = useTimer()
 
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (!isActive) return
+    // Keyboard shortcuts
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (!isActive) return
 
-      switch (e.code) {
-        case 'Space':
-          e.preventDefault()
-          setIsActive(!isActive)
-          if (!isActive) {
-            startTimer()
-          }
-          break
-        case 'ArrowRight':
-          e.preventDefault()
-          nextImage()
-          break
-        case 'ArrowLeft':
-          e.preventDefault()
-          previousImage()
-          break
-        case 'KeyF':
-          e.preventDefault()
-          toggleFilter('flip')
-          break
-        case 'KeyG':
-          e.preventDefault()
-          toggleFilter('grayscale')
-          break
-        case 'KeyB':
-          e.preventDefault()
-          toggleFilter('blur')
-          break
-        case 'KeyH':
-          e.preventDefault()
-          toggleFilter('highContrast')
-          break
-        case 'KeyR':
-          e.preventDefault()
-          toggleRuleOfThirds()
-          break
-        case 'KeyL':
-          e.preventDefault()
-          toggleLineOfAction()
-          break
-        default:
-          break
-      }
+            switch (e.code) {
+                case 'Escape':
+                    e.preventDefault()
+                    setIsActive(false)
+                    break
+                case 'Space':
+                    e.preventDefault()
+                    setIsPaused(!isPaused)
+                    if (!isPaused) {
+                        startTimer()
+                    }
+                    break
+                case 'ArrowRight':
+                    e.preventDefault()
+                    nextImage()
+                    break
+                case 'ArrowLeft':
+                    e.preventDefault()
+                    previousImage()
+                    break
+                case 'KeyF':
+                    e.preventDefault()
+                    toggleFilter('flip')
+                    break
+                case 'KeyG':
+                    e.preventDefault()
+                    toggleFilter('grayscale')
+                    break
+                case 'KeyB':
+                    e.preventDefault()
+                    toggleFilter('blur')
+                    break
+                case 'KeyH':
+                    e.preventDefault()
+                    toggleFilter('highContrast')
+                    break
+                case 'KeyR':
+                    e.preventDefault()
+                    toggleRuleOfThirds()
+                    break
+                case 'KeyL':
+                    e.preventDefault()
+                    toggleLineOfAction()
+                    break
+                default:
+                    break
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown)
+        return () => window.removeEventListener('keydown', handleKeyDown)
+    }, [
+        isActive,
+        toggleFilter,
+        toggleRuleOfThirds,
+        toggleLineOfAction,
+        nextImage,
+        previousImage,
+        setIsPaused,
+        startTimer,
+    ])
+
+    // Show Dashboard if no images loaded, otherwise show Practice View
+    if (!isActive) {
+        return <Dashboard />
     }
 
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [
-    isActive,
-    toggleFilter,
-    toggleRuleOfThirds,
-    toggleLineOfAction,
-    nextImage,
-    previousImage,
-    setIsActive,
-    startTimer,
-  ])
+    return (
+        <div className="w-full h-screen bg-black overflow-hidden">
+            {/* Practice View */}
+            <Viewport />
 
-  // Show Dashboard if no images loaded, otherwise show Practice View
-  if (!isActive) {
-    return <Dashboard />
-  }
-
-  return (
-    <div className="w-full h-screen bg-black overflow-hidden">
-      {/* Practice View */}
-      <Viewport />
-
-      {/* Controls HUD */}
-      {isActive && <Controls />}
-
-    </div>
-  )
+            {/* Controls HUD */}
+            {<Controls />}
+        </div>
+    )
 }
 
 export default App

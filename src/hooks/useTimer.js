@@ -57,12 +57,12 @@ export const useTimer = () => {
         clearInterval(intervalRef.current)
 
         if (timerMode === 'class') {
-          currentSequenceIndexRef.current = 
+          currentSequenceIndexRef.current =
             (currentSequenceIndexRef.current + 1) % classSequence.length
         }
 
         nextImage()
-        
+
         // Auto-restart timer for next image
         if (timerMode !== 'fixed' || timerMode === 'fixed') {
           setTimeout(() => {

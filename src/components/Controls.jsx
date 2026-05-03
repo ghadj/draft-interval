@@ -5,12 +5,12 @@ import { useTimer } from '../hooks/useTimer'
 
 export default function Controls() {
   const {
-    isActive,
+    isPaused,
     timeLeft,
     timerDuration,
     filters,
     showRuleOfThirds,
-    setIsActive,
+    setIsPaused,
     toggleFilter,
     toggleRuleOfThirds,
     toggleLineOfAction,
@@ -21,8 +21,8 @@ export default function Controls() {
   const { startTimer } = useTimer()
 
   const handlePlayPause = () => {
-    if (isActive) {
-      setIsActive(false)
+    if (isPaused) {
+      setIsPaused(false)
     } else {
       startTimer()
     }
@@ -39,7 +39,7 @@ export default function Controls() {
       </div>
 
       <div className="fixed bottom-0 right-0 pl-1 pr-4 bg-black text-white text-xs flex items-center">
-        {isActive ? <Play size={12} />:<Pause size={12} />} 
+        {isPaused ? <Pause size={13} />:<Play size={13} />} 
         {String(timeLeft || timerDuration).padStart(3, '0')}s
       </div>
     </div>

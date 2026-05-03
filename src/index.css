@@ -3,11 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-
-    }
+    body {}
 }
 
-@layer components {
-
-}
+@layer components {}
