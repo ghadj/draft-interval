@@ -133,15 +133,21 @@ export default function Dashboard() {
                     {/* Mode Selection */}
                     <div className="space-y-2">
                         <label className="text-sm ">Mode</label>
-                        <select
-                            value={timerMode}
-                            onChange={(e) => setTimerMode(e.target.value)}
-                            className="w-full rounded-lg px-6 py-4 text-sm border border-black focus:outline-none focus:border-[#333333]"
-                        >
-                            <option value="fixed">Fixed Interval</option>
-                            <option value="class">Class Mode</option>
-                            <option value="memory">Memory Flash</option>
-                        </select>
+                        <div className="relative">
+                            <select
+                                value={timerMode}
+                                onChange={(e) => setTimerMode(e.target.value)}
+                                className="w-full appearance-none rounded-lg px-6 py-4 text-sm border border-black focus:outline-none focus:border-[#333333] bg-white"                        >
+                                <option value="fixed">Fixed Interval</option>
+                                <option value="class">Class Mode</option>
+                                <option value="memory">Memory Flash</option>
+                            </select>
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Duration Setting (for Fixed mode) */}
