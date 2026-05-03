@@ -14,7 +14,8 @@ function App() {
         toggleLineOfAction,
         nextImage,
         previousImage,
-        setIsActive
+        setIsActive,
+        resetAll
     } = useSessionStore()
 
     const { togglePause, handleNextImage, handlePreviousImage } = useTimer()
@@ -26,7 +27,7 @@ function App() {
             switch (e.code) {
                 case 'Escape':
                     e.preventDefault()
-                    setIsActive(false)
+                    resetAll()
                     break
                 case 'Space':
                     e.preventDefault()
@@ -82,6 +83,7 @@ function App() {
         togglePause,
         handleNextImage,
         handlePreviousImage,
+        resetAll,
     ])
 
     if (!isActive) {

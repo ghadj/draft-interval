@@ -84,4 +84,23 @@ export const useSessionStore = create((set, get) => ({
     // Control Visibility
     isShowControls: true,
     setShowControls: (show) => set((state) => ({ isShowControls: show })),
+
+    // Reset all settings
+    resetAll: () => set({
+        isActive: false,
+        isPaused: false,
+        timeLeft: 0,
+        endTime: null,
+        currentImageIndex: 0,
+        timerMode: 'fixed',
+        timerDuration: 30,
+        filters: {
+            grayscale: false,
+            flip: false,
+            blur: false,
+            highContrast: false,
+        },
+        showRuleOfThirds: false,
+        showLineOfAction: false,
+    }),
 }))
