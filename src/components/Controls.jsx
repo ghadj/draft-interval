@@ -15,7 +15,7 @@ export default function Controls() {
   const { startTimer } = useTimer()
   const currentImage = getCurrentImage()
 
-  if (!isShowControls) return null
+  if (!isShowControls && !isPaused) return null
 
   return (
     <div>
