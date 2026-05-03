@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react'
 
+const LINE_OF_ACTION_COLOR = 'rgba(255, 96, 92, 0.7)' // #FF605C
+
 export default function LineOfAction() {
     const canvasRef = useRef(null)
     const [isDrawing, setIsDrawing] = useState(false)
@@ -27,7 +29,7 @@ export default function LineOfAction() {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
 
         // Draw line from start to current
-        ctx.strokeStyle = 'rgba(255, 100, 100, 0.7)'
+        ctx.strokeStyle = LINE_OF_ACTION_COLOR
         ctx.lineWidth = 2
         ctx.lineCap = 'round'
         ctx.beginPath()
