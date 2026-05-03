@@ -16,6 +16,12 @@ The app is available online:
 - Rule of Thirds & Line of Action overlays
 - Full keyboard control for hands-free practice
 
+## Screenshots
+
+![dashboard](./public/screenshots/screenshot-01.png)
+
+![practice](./public/screenshots/screenshot-02.png)
+
 ## Keyboard Shortcuts
 
 | Key | Action |
