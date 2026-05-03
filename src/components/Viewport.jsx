@@ -62,26 +62,23 @@ export default function Viewport() {
     return (
         <div
             ref={containerRef}
-            className="relative w-full h-screen bg-black overflow-hidden"
+            className="w-full h-screen bg-black overflow-hidden flex items-center justify-center"
         >
-            {/* Image Container */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative inline-block">
                 <img
                     ref={imgRef}
                     src={currentImage.url}
                     alt={currentImage.name}
-                    className="max-h-full max-w-full object-contain"
+                    className="block max-h-screen max-w-full object-contain"
                     style={{
                         filter: getFilterStyle(),
                         transform: getTransformStyle(),
                     }}
                 />
+
+                {showRuleOfThirds && <RuleOfThirds />}
+                {showLineOfAction && <LineOfAction />}
             </div>
-
-            {/* Overlays */}
-            {showRuleOfThirds && <RuleOfThirds />}
-            {showLineOfAction && <LineOfAction />}
-
         </div>
     )
 }
