@@ -192,7 +192,7 @@ export default function Dashboard() {
                 <button
                     onClick={handleStart}
                     disabled={loadedCount === 0}
-                    className="w-full flex items-center justify-center gap-3 bg-green-600 text-white px-6 py-4 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-bold text-lg"
+                    className="w-full flex items-center justify-center gap-3 bg-gradient-to-b from-[#34C759] to-[#00D084] text-white px-6 py-4 rounded-lg hover:shadow-lg hover:shadow-green-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-bold text-lg"
                 >
                     <Play size={20} />
                     Start Session
