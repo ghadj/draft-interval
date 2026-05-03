@@ -15,7 +15,6 @@ export default function Viewport() {
 
     const imgRef = useRef(null)
     const containerRef = useRef(null)
-    const [mouseActive, setMouseActive] = useState(true)
 
     // Build filter string from active filters
     const getFilterStyle = () => {
@@ -38,11 +37,9 @@ export default function Viewport() {
 
         let timeoutId
         const handleMouseMove = () => {
-            setMouseActive(true)
             setShowControls(true)
             clearTimeout(timeoutId)
             timeoutId = setTimeout(() => {
-                setMouseActive(false)
                 setShowControls(false)
             }, 3000) // Hide UI after 3 seconds of inactivity
         }
