@@ -5,6 +5,7 @@ import { useTimer } from '../hooks/useTimer'
 
 export default function Controls() {
   const {
+    isShowControls,
     isPaused,
     timeLeft,
     timerDuration,
@@ -14,8 +15,7 @@ export default function Controls() {
     toggleFilter,
     toggleRuleOfThirds,
     toggleLineOfAction,
-    nextImage,
-    previousImage,
+    getCurrentImage,
   } = useSessionStore()
 
   const { startTimer } = useTimer()
@@ -28,6 +28,10 @@ export default function Controls() {
     }
   }
 
+  if (!isShowControls) return null
+
+  const currentImage = getCurrentImage()
+
   return (
     <div>
       <div className="fixed top-0 left-0 pl-4 pr-1 bg-black text-white text-xs ">
@@ -39,9 +43,15 @@ export default function Controls() {
       </div>
 
       <div className="fixed bottom-0 right-0 pl-1 pr-4 bg-black text-white text-xs flex items-center">
-        {isPaused ? <Pause size={13} />:<Play size={13} />} 
+        {isPaused ? <Pause size={13} /> : <Play size={13} />}
         {String(timeLeft || timerDuration).padStart(3, '0')}s
       </div>
+
+      {/* Image Info - Subtle text in corner */}
+      <div className="absolute bottom-0 text-xs pl-4 pr-1 bg-black text-white pointer-events-none">
+        {currentImage.name}
+      </div>
+
     </div>
   )
 }

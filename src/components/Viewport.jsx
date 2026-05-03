@@ -5,19 +5,18 @@ import LineOfAction from './overlays/LineOfAction'
 
 export default function Viewport() {
     const {
-        images,
-        currentImageIndex,
+        getCurrentImage,
         filters,
         showRuleOfThirds,
         showLineOfAction,
         isActive,
+        toggleControls,
+        setShowControls,
     } = useSessionStore()
 
     const imgRef = useRef(null)
     const containerRef = useRef(null)
     const [mouseActive, setMouseActive] = useState(true)
-
-    const currentImage = images[currentImageIndex]
 
     // Build filter string from active filters
     const getFilterStyle = () => {
@@ -41,9 +40,11 @@ export default function Viewport() {
         let timeoutId
         const handleMouseMove = () => {
             setMouseActive(true)
+            setShowControls(true)
             clearTimeout(timeoutId)
             timeoutId = setTimeout(() => {
                 setMouseActive(false)
+                setShowControls(false)
             }, 3000) // Hide UI after 3 seconds of inactivity
         }
 
@@ -53,6 +54,8 @@ export default function Viewport() {
             clearTimeout(timeoutId)
         }
     }, [isActive])
+
+    const currentImage = getCurrentImage()
 
     if (!currentImage) {
         return (
@@ -85,10 +88,6 @@ export default function Viewport() {
             {showRuleOfThirds && <RuleOfThirds />}
             {showLineOfAction && <LineOfAction />}
 
-            {/* Image Info - Subtle text in corner */}
-            <div className="absolute bottom-0 text-xs pl-4 pr-1 bg-black text-white pointer-events-none">
-                {currentImage.name}
-            </div>
         </div>
     )
 }

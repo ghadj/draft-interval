@@ -80,4 +80,8 @@ export const useSessionStore = create((set, get) => ({
             sessions: [...state.sessions, { ...session, id: Date.now() }],
         }))
     },
+
+    // Control Visibility
+    isShowControls: true,
+    setShowControls: (show) => set((state) => ({ isShowControls: show })),
 }))
